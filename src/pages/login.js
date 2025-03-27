@@ -4,19 +4,19 @@ import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'reac
 
 
 export default function Login () {
-    const [login, setLogin] = useState('');
+    const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
     function getLogin() {
 
         try {
-            if (!login || !password) {
-                return Alert.alert("Atenção", "Prencha todos os campos corretamente")
+            if (!user || !password) {
+                return Alert.alert("Atenção", "Prencha todos os campos corretamente");
             };
             
-            return Alert.alert("Login realizado com sucesso!")
+            Alert.alert("Login realizado com sucesso!");
         } catch (error) {
-            
+            return error;
         }
     }
 
@@ -26,10 +26,17 @@ export default function Login () {
             <View style={styles.boxInput}>
                     
                 <View style={styles.input}>
-                    <TextInput style={styles.textInput} placeholder="Login"></TextInput>
+                    <TextInput 
+                        style={styles.textInput} placeholder="Login"
+                        onChangeText={setUser}
+                    ></TextInput>
                 </View>
                 <View style={styles.input}>
-                    <TextInput style={styles.textInput} placeholder="Password"></TextInput>
+                    <TextInput 
+                        style={styles.textInput} placeholder="Password"
+                        onChangeText={setPassword}
+                    >
+                    </TextInput>
                 </View>
             </View>
 
@@ -71,31 +78,31 @@ const styles = StyleSheet.create ({
         fontSize: 50,
         fontWeight: 900,
         color: "green",
-        marginBottom: 50
+        marginBottom: 40
     },
 
     textInput: {
         borderColor: "gray",
         fontSize: 20,
-        padding: 20,
+        paddingLeft: 20,
         alignItems: "center",
         justifyContent: "center",
 
     },
 
     boxInput: {
-        
+        marginBottom: 15
     },
 
     input: {
         borderRadius: 20,
         marginBottom: 10,
         justifyContent: "center",
-        borderColor: "grey",
-        borderWidth: .2,
+        borderColor: "#4f6353",
+        borderWidth: .4,
         borderRadius: 15,
         height: 50,
-        marginBottom: 10
+        marginBottom: 20
         
     },
 
